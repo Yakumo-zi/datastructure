@@ -1,7 +1,6 @@
 #include <iostream>
-#include "SingleList/SingleList.h"
-
+#include "Queue/Queue.h"
 int main(){
-  listTest();
+  testQueue();
   return 0;
 }

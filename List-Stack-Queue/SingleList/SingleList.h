@@ -15,7 +15,7 @@ public:
   bool IsEmpty();
   bool IsLast(Node *);
   Node *Find(int);
-  void Delte(int);
+  void Delete(int);
   Node *FindPreviouse(int);
   void Insert(Node *, int);
   Node *Header();

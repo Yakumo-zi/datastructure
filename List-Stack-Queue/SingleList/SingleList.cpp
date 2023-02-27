@@ -29,32 +29,28 @@ Node *List::Find(int value) {
     std::cout << "List is empty" << std::endl;
     return nullptr;
   }
-  Node *cur = head->next;
-  while (cur != nullptr) {
-    if (cur->value == value) {
-      return cur;
-    }
-    cur = cur->next;
+  Node *prev = FindPreviouse(value);
+  if (prev == nullptr) {
+    std::cout << "This value is not in list" << std::endl;
+    return nullptr;
   }
-  return nullptr;
+  return prev->next;
 }
-void List::Delte(int value) {
+void List::Delete(int value) {
   if (IsEmpty()) {
     std::cout << "List is empty" << std::endl;
     return;
   }
-  Node *cur = head->next;
-  Node *pre = head;
-  while (cur != nullptr) {
-    if (cur->value == value) {
-      pre->next = cur->next;
-      delete cur;
-      return;
-    }
-    cur = cur->next;
-    pre = pre->next;
+  Node *prev = FindPreviouse(value);
+  if (prev == nullptr) {
+    std::cout << "This element is not in list" << std::endl;
+    return;
   }
-  std::cout << "This element is not in list" << std::endl;
+  Node *cur = prev->next;
+  Node *next = cur->next;
+  std::cout<<"Delete element "<<cur->value<<" success"<<std::endl;
+  delete cur;
+  prev->next = next;
 }
 Node *List::FindPreviouse(int value) {
   if (IsEmpty()) {
@@ -64,8 +60,8 @@ Node *List::FindPreviouse(int value) {
   Node *cur = head->next;
   Node *pre = head;
   while (cur != nullptr) {
-    if (cur->value == value && pre != head) {
-      return cur;
+    if (cur->value == value) {
+      return pre;
     }
     cur = cur->next;
     pre = pre->next;
@@ -81,43 +77,40 @@ void List::Insert(Node *pos, int value) {
     std::cout << "Insert element " << value << " success" << std::endl;
     return;
   }
-  Node *prev = head;
-  Node *cur = head->next;
-  while (cur != nullptr) {
-    if (cur == pos) {
-      Node *node = new Node(value);
-      node->next = cur;
-      prev->next = node;
-      std::cout << "Insert element " << value << " success" << std::endl;
-      return;
-    }
-    cur = cur->next;
-    prev = prev->next;
+  Node *prev = FindPreviouse(pos->value);
+  if (prev != nullptr) {
+    Node *next = prev->next;
+    Node *node = new Node(value);
+    prev->next = node;
+    node->next = next;
+    std::cout << "Insert element " << value << " success" << std::endl;
+    return;
   }
   std::cout << "Insert element " << value << " failure" << std::endl;
 }
-void List::Print(){
-  Node* cur=head->next;
-  int count=0;
-  while(cur!=nullptr){
-    std::cout<<"element "<<count<<" is "<<cur->value<<std::endl;
-    cur=cur->next;
+void List::Print() {
+  Node *cur = head->next;
+  int count = 0;
+  while (cur != nullptr) {
+    std::cout << "element " << count << " is " << cur->value << std::endl;
+    cur = cur->next;
+    count++;
   }
 }
 
-void List::PushFront(int value){
-  Node* node=new Node(value);
-  Node* next=head->next;
-  head->next=node;
-  node->next=next;
+void List::PushFront(int value) {
+  Node *node = new Node(value);
+  Node *next = head->next;
+  head->next = node;
+  node->next = next;
 }
-void List::PushBack(int value){
-  Node* node=new Node(value);
-  Node* cur=head->next;
-  while(cur->next!=nullptr){
-    cur=cur->next;
+void List::PushBack(int value) {
+  Node *node = new Node(value);
+  Node *cur = head->next;
+  while (cur->next != nullptr) {
+    cur = cur->next;
   }
-  cur->next=node;
+  cur->next = node;
 }
 Node *List::Header() { return head; }
 Node *List::First() { return head->next; }
@@ -141,6 +134,8 @@ void listTest() {
     cur = cur->next;
     count++;
   }
+  list.Delete(3);
+  std::cout << "print list" << std::endl;
+  list.Print();
   std::cout << "list test end" << std::endl;
 }
-
