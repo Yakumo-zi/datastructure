@@ -3,10 +3,8 @@
 Node::Node(int val) : value(val), next(nullptr) {}
 
 List::List() : head(new Node(-1)) {
-  std::cout << "List constructing" << std::endl;
 }
 List::~List() {
-  std::cout << "Destructing begin..." << std::endl;
   Node *cur = head->next;
   delete head;
   while (cur != nullptr) {
@@ -14,7 +12,6 @@ List::~List() {
     delete cur;
     cur = next;
   }
-  std::cout << "Destructing end！" << std::endl;
 }
 bool List::IsEmpty() { return head->next == nullptr; }
 bool List::IsLast(Node *node) {
@@ -90,7 +87,7 @@ void List::Insert(Node *pos, int value) {
 }
 void List::Print() {
   Node *cur = head->next;
-  int count = 0;
+  int count = 1;
   while (cur != nullptr) {
     std::cout << "element " << count << " is " << cur->value << std::endl;
     cur = cur->next;
@@ -106,7 +103,7 @@ void List::PushFront(int value) {
 }
 void List::PushBack(int value) {
   Node *node = new Node(value);
-  Node *cur = head->next;
+  Node *cur = head;
   while (cur->next != nullptr) {
     cur = cur->next;
   }
