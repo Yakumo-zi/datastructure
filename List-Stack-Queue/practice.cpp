@@ -123,3 +123,51 @@ void TwoListUnionSet(List &&L, List &&P) {
   }
   u.Print();
 }
+
+Node *ReverseProcess(Node *cur) {
+  if (cur->next == nullptr) {
+    return cur;
+  }
+  Node *res = ReverseProcess(cur->next);
+  Node *curR = res;
+  while (curR->next != nullptr) {
+    curR=curR->next;
+  }
+  cur->next=nullptr;
+  curR->next=cur;
+  return res;
+}
+void ReverseRecursive(List &&l) {
+  Node* header=ReverseProcess(l.First());
+  l.Header()->next=header;
+  l.Print();
+}
+void Reverse(List &&list) {
+  Node *header = nullptr;
+  Node *cur = list.First();
+  while (cur != nullptr) {
+    Node *next = cur->next;
+    cur->next = header;
+    header = cur;
+    cur = next;
+  }
+  list.Header()->next = header;
+  list.Print();
+}
+Node *FindElementProcess(Node *cur, int value) {
+  if (cur == nullptr) {
+    return nullptr;
+  }
+  if (cur->value == value) {
+    return cur;
+  }
+  return FindElementProcess(cur->next, value);
+}
+void FindElementRecursive(List &&list, int value) {
+  Node *find = FindElementProcess(list.First(), value);
+  if (find) {
+    std::cout << "find element " << value << " address:" << find << std::endl;
+    return;
+  }
+  std::cout << "don't find the element " << value << std::endl;
+}

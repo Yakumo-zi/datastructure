@@ -1,15 +1,17 @@
 #include <iostream>
 #include <utility>
-#include "practice.h"
+#include "SelfAdjustingTable/SelfAdjustingTable.h"
 int main(){
-  List l;
-  List p;
-  for(int i=1;i<10;i+=2){
-    l.PushBack(i);
+  SelfAdjustingTable t(5);
+  for(int i=1;i<=5;i++){
+    t.Push(i);
   }
-  for(int i=5;i<10;i++){
-    p.PushBack(i);
-  }
-  TwoListUnionSet(std::move(l),std::move(p));
+  t.Print();
+  t.Find(3);
+  t.Print();
+  t.Find(5);
+  t.Print();
+  t.Find(1);
+  t.Print();
   return 0;
 }
