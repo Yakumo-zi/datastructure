@@ -4,6 +4,8 @@
 CMakeFiles/main.dir/BinaryTree/BinaryTree.cpp.o: ../BinaryTree/BinaryTree.cpp
 CMakeFiles/main.dir/BinaryTree/BinaryTree.cpp.o: ../BinaryTree/BinaryTree.h
 
+CMakeFiles/main.dir/SearchTree/SearchTree.cpp.o: ../SearchTree/SearchTree.cpp
+
 CMakeFiles/main.dir/main.cpp.o: ../BinaryTree/BinaryTree.h
 CMakeFiles/main.dir/main.cpp.o: ../main.cpp
 

@@ -150,6 +150,33 @@ BinaryTree/BinaryTree.cpp.s:
 	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/BinaryTree/BinaryTree.cpp.s
 .PHONY : BinaryTree/BinaryTree.cpp.s
 
+SearchTree/SearchTree.o: SearchTree/SearchTree.cpp.o
+
+.PHONY : SearchTree/SearchTree.o
+
+# target to build an object file
+SearchTree/SearchTree.cpp.o:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/SearchTree/SearchTree.cpp.o
+.PHONY : SearchTree/SearchTree.cpp.o
+
+SearchTree/SearchTree.i: SearchTree/SearchTree.cpp.i
+
+.PHONY : SearchTree/SearchTree.i
+
+# target to preprocess a source file
+SearchTree/SearchTree.cpp.i:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/SearchTree/SearchTree.cpp.i
+.PHONY : SearchTree/SearchTree.cpp.i
+
+SearchTree/SearchTree.s: SearchTree/SearchTree.cpp.s
+
+.PHONY : SearchTree/SearchTree.s
+
+# target to generate assembly for a file
+SearchTree/SearchTree.cpp.s:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/SearchTree/SearchTree.cpp.s
+.PHONY : SearchTree/SearchTree.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -189,6 +216,9 @@ help:
 	@echo "... BinaryTree/BinaryTree.o"
 	@echo "... BinaryTree/BinaryTree.i"
 	@echo "... BinaryTree/BinaryTree.s"
+	@echo "... SearchTree/SearchTree.o"
+	@echo "... SearchTree/SearchTree.i"
+	@echo "... SearchTree/SearchTree.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

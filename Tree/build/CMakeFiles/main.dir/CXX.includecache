@@ -6,13 +6,5 @@
 
 #IncludeRegexTransform: 
 
-/home/yakumo/Datastructure/Tree/BinaryTree/BinaryTree.h
-iostream
--
-
-/home/yakumo/Datastructure/Tree/main.cpp
-iostream
--
-BinaryTree/BinaryTree.h
-/home/yakumo/Datastructure/Tree/BinaryTree/BinaryTree.h
+/home/yakumo/Datastructure/Tree/SearchTree/SearchTree.cpp
 

@@ -1,8 +1,6 @@
 #include <iostream>
-#include "BinaryTree/BinaryTree.h"
+#include "SearchTree/SearchTree.h"
 int main(){
-  std::string exp{"ab+cde+**"};
-  Node* root=ConstructExpressionTree(exp);
-  PostOrder(root);
+
   return 0;
 }
