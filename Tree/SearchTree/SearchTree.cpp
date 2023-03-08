@@ -52,17 +52,17 @@ void SearchTree::Insert(int value) {
     }
   }
 }
-Node *SearchTree::Find(int value) {
-  Node *cur = root;
-  while (cur != nullptr) {
-    if (value > cur->value) {
-      if (cur->right != nullptr)
-        cur = cur->right;
+Node **SearchTree::Find(int value) {
+  Node **cur = &root;
+  while ((*cur) != nullptr) {
+    if (value > (*cur)->value) {
+      if ((*cur)->right != nullptr)
+          cur = &(*cur)->right;
       else
         return nullptr;
-    } else if (value < cur->value) {
-      if (cur->left != nullptr)
-        cur = cur->left;
+    } else if (value < (*cur)->value) {
+      if ((*cur)->left != nullptr)
+        cur = &(*cur)->left;
       else
         return nullptr;
     } else {
@@ -97,13 +97,15 @@ void SearchTree::Delete(int value) {
     std::cout<<"node not found"<<std::endl;
     return;
   }
-  Node* res=Find(value);
-  std::cout<<"res:"<<res->value<<std::endl;
-  std::cout<<"res->left:"<<res->left<<std::endl;
-  std::cout<<"res->right:"<<res->right<<std::endl;
+  Node** find = Find(value);
+  if (find == nullptr) {
+      std::cout << "node not found" << std::endl;
+      return;
+  }
+  Node* res = *find;
   if(res->left==nullptr&&res->right==nullptr){
-    delete res;
-    res=nullptr;
+     delete res;
+     *find = nullptr;
     return;
   }
   if(res->right==nullptr){
@@ -124,19 +126,19 @@ void SearchTree::Delete(int value) {
   parent->left=cur->left;
   parent->right=cur->right;
   delete cur;
-  cur=nullptr;
 }
 void testSearchTree() {
   SearchTree st;
-  st.Insert(1);
-  st.Insert(2);
-  st.Insert(9);
-  st.Insert(0);
-  st.Insert(3);
-  st.Insert(4);
-  st.Insert(2);
-  st.Insert(1);
+  for (int i = 10;i > 0;i--) {
+      st.Insert(i);
+  }
   st.InOrder();
-  st.Delete(4);
-  st.InOrder();
+  //for (int i = 0;i <= 10;i++) {
+  //    st.Delete(i);
+  //    st.InOrder();
+  //}
+  for (int i = 10;i > 0;i--) {
+      st.Delete(i);
+      st.InOrder();
+  }
 }
