@@ -15,7 +15,7 @@ public:
   SearchTree(int);
   SearchTree();
   ~SearchTree();
-  Node** Find(int);
+  Node* Find(int);
   Node* FindMin();
   Node* FindMax();
   void InOrder();

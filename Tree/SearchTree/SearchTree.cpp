@@ -52,17 +52,17 @@ void SearchTree::Insert(int value) {
     }
   }
 }
-Node **SearchTree::Find(int value) {
-  Node **cur = &root;
-  while ((*cur) != nullptr) {
-    if (value > (*cur)->value) {
-      if ((*cur)->right != nullptr)
-          cur = &(*cur)->right;
+Node *SearchTree::Find(int value) {
+  Node *cur = root;
+  while (cur != nullptr) {
+    if (value > cur->value) {
+      if (cur->right != nullptr)
+          cur = cur->right;
       else
         return nullptr;
-    } else if (value < (*cur)->value) {
-      if ((*cur)->left != nullptr)
-        cur = &(*cur)->left;
+    } else if (value < cur->value) {
+      if (cur->left != nullptr)
+        cur = cur->left;
       else
         return nullptr;
     } else {
@@ -92,66 +92,17 @@ Node *SearchTree::FindMax() {
   }
   return cur;
 }
-void SearchTree::Delete(int value) {
+void deleteNode(Node* root,int value){
   if(root==nullptr){
     std::cout<<"node not found"<<std::endl;
     return;
+  }else if(value>root->value){
+  
   }
-  Node** find = Find(value);
-  if (find == nullptr) {
-      std::cout << "node not found" << std::endl;
-      return;
-  }
-  Node* res = *find;
-  if(res->left==nullptr&&res->right==nullptr){
-     delete res;
-     *find = nullptr;
-    return;
-  }
-  if(res->right==nullptr){
-    Node* left=res->left;
-    res->value=left->value;
-    res->right=left->right;
-    res->left=left->left;
-    delete left;
-    return;
-  }
-  Node* parent=res;
-  Node* cur=res->right;
-  while(cur->left!=nullptr){
-    parent=cur;
-    cur=cur->left;
-  }
-  res->value=cur->value;
-  parent->left=cur->left;
-  parent->right=cur->right;
-  delete cur;
+}
+void SearchTree::Delete(int value) {
+  deleteNode(root,value);
 }
 void testSearchTree() {
   SearchTree st;
-  // for (int i = 10;i > 0;i--) {
-  //     st.Insert(i);
-  // }
-  // st.InOrder();
-  // //for (int i = 0;i <= 10;i++) {
-  // //    st.Delete(i);
-  // //    st.InOrder();
-  // //}
-  // for (int i = 10;i > 0;i--) {
-  //     st.Delete(i);
-  //     st.InOrder();
-  // }
-  const int N=1000;
-  std::srand(std::time(nullptr));
-  int arr[N];
-  for(int i=0;i<N;i++){
-    arr[i]=1 + std::rand()/((RAND_MAX + 1u)/N);
-  }
-  for(int i=0;i<N;i++){
-    st.Insert(arr[i]);
-  }
-  st.InOrder();
-  for(int i=0;i<N;i++){
-    st.Delete(arr[i]);
-  }
 }
