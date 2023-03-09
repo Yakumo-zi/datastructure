@@ -129,16 +129,29 @@ void SearchTree::Delete(int value) {
 }
 void testSearchTree() {
   SearchTree st;
-  for (int i = 10;i > 0;i--) {
-      st.Insert(i);
+  // for (int i = 10;i > 0;i--) {
+  //     st.Insert(i);
+  // }
+  // st.InOrder();
+  // //for (int i = 0;i <= 10;i++) {
+  // //    st.Delete(i);
+  // //    st.InOrder();
+  // //}
+  // for (int i = 10;i > 0;i--) {
+  //     st.Delete(i);
+  //     st.InOrder();
+  // }
+  const int N=1000;
+  std::srand(std::time(nullptr));
+  int arr[N];
+  for(int i=0;i<N;i++){
+    arr[i]=1 + std::rand()/((RAND_MAX + 1u)/N);
+  }
+  for(int i=0;i<N;i++){
+    st.Insert(arr[i]);
   }
   st.InOrder();
-  //for (int i = 0;i <= 10;i++) {
-  //    st.Delete(i);
-  //    st.InOrder();
-  //}
-  for (int i = 10;i > 0;i--) {
-      st.Delete(i);
-      st.InOrder();
+  for(int i=0;i<N;i++){
+    st.Delete(arr[i]);
   }
 }

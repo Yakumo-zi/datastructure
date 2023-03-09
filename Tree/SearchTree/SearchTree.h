@@ -1,4 +1,6 @@
 #include <iostream>
+#include <ctime>
+#include <cstdlib>
 struct Node {
   int value;
   Node *left;
